@@ -17,8 +17,8 @@ El esquema consta de **11 tablas normalizadas**:
 - **CARRERAS**: 15 carreras disponibles en la universidad
 - **DEPARTAMENTOS**: Áreas académicas que supervisan el programa
 - **PERFILES_AYUDANTES**: Tipos de perfiles (Embajador Naranja, etc.)
-- **TIPOS_INSCRIPCION**: Principal, Minor
-- **PROGRAMAS_BECA**: Tipos de becas disponibles
+- **TIPOS_INSCRIPCION**: Pregrado, Minor
+- **PROGRAMAS_BECA**: Tipos de becas adicionales que posee cada estudiante
 
 ### Tablas de Relaciones (N:N)
 - **ESTUDIANTES_CARRERAS**: Relación N:N entre estudiantes y carreras (permite múltiples carreras por estudiante)
@@ -216,7 +216,7 @@ Este diseño sirve como base para:
 
 **Paso 2: Identificar relaciones**
 - Un estudiante → múltiples carreras (N:N)
-- Un estudiante → múltiples supervisores (N:N)
+- Un estudiante → Un supervisor (1:N)
 - Un estudiante → múltiples becas (N:N)
 
 **Paso 3: Crear tablas de unión**
