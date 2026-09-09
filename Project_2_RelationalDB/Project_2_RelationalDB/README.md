@@ -69,7 +69,7 @@ El esquema consta de **11 tablas normalizadas**:
 - **Máxima demanda:** Ingeniería Química (17 solicitudes en T2223-2, 29.41% aprobación)
 - **Carreras con 0% aprobación en algún trimestre:** Economía Empresarial (T2223-2), Idiomas Modernos (T2223-3)
 - **Patrón observado:** Carreras de ingeniería tienden a tener tasas de aprobación del 25-50%, mientras que algunas carreras humanísticas varían entre 0-100%
-- **Implicación:** La carrera es predictor del desempeño académico; carreras técnicas requieren más apoyo
+- **Implicación:** Las tasas de aprobación varían entre las carreras y trimestres analizados. Estas diferencias son descriptivas: por sí solas no permiten concluir que la carrera prediga el desempeño académico ni explicar las causas de aprobación o rechazo.
 
 ### Query 3: Estudiantes con Documentación Incompleta
 **Resultado:** 3 estudiantes únicos con documentación incompleta
@@ -78,8 +78,8 @@ El esquema consta de **11 tablas normalizadas**:
 - **Estudiantes afectados:** Estudiante_4, Estudiante_5, Estudiante_53
 - **Documentación incompleta en ambos trimestres:** Cada estudiante aparece en T2223-2 y T2223-3
 - **Impacto crítico:** **100% fueron rechazados** (Aprobacion = NO)
-- **Conclusión:** Documentación incompleta es predictor perfecto de rechazo — indica falta de compromiso administrativo
-
+- **Conclusión:** La documentación incompleta es un aspecto que conviene monitorear durante la evaluación. Los resultados presentados no permiten atribuir falta de compromiso a los estudiantes ni establecer una regla general de predicción del rechazo.
+  
 ### Query 4: Resumen General (Métricas Clave)
 **Resultado:** 
 - **Estudiantes únicos evaluados:** **82** 
