@@ -62,7 +62,7 @@ El esquema consta de **11 tablas normalizadas**:
 - **Importancia relacional:** Sin la tabla N:N ESTUDIANTES_CARRERAS, sería imposible capturar esta información
 
 ### Query 2: Tasa de Aprobación por Carrera y Trimestre
-**Resultado:** Variación significativa entre carreras
+**Resultado:** Diferencias observadas entre carreras
 
 **Hallazgos clave:**
 - **Máxima aprobación:** Educación Inicial (100%, pero solo 1 solicitud en T2223-2)
@@ -186,7 +186,7 @@ FROM APROBACION_BENEFICIOS;
 
 4. **Métricas por entidad vs. por transacción:** Contar 82 estudiantes es diferente a contar 164 evaluaciones (82 × 2 trimestres). La pregunta de negocio determina la métrica correcta.
 
-5. **La documentación es predictor perfecto de rechazo:** El 100% de estudiantes con documentación incompleta fueron rechazados, indicando que requiere intervención administrativa temprana.
+5. **Distinguir observación de predicción:** Encontrar documentación incompleta junto con resultados de rechazo no demuestra una relación causal ni permite predecir otros casos. El análisis sirve para identificar aspectos del proceso que requieren seguimiento.
 
 ---
 
@@ -208,7 +208,7 @@ Este diseño sirve como base para:
 - **Alertas de documentación incompleta** — Intervenir temprano antes de evaluación
 - **Análisis de patrones de rechazo** — Encontrar carreras/estudiantes en riesgo
 - **Reportes de participación estudiantil** — Métricas mensuales/semestrales para liderazgo
-- **Predicción de desempeño** — Usar carrera + documentación como variables predictivas
+- **Seguimiento descriptivo por carrera y estado documental** — Comparar resultados e identificar aspectos que requieren revisión, sin atribuir causas ni predecir el desempeño.
 
 ---
 
