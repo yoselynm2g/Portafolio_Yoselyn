@@ -87,6 +87,7 @@ El esquema consta de **11 tablas normalizadas**:
 - **Porcentaje de aprobación:** **45,12%**
 
 **Interpretación:** De los 82 estudiantes únicos evaluados para el Programa de Ayudantía en los trimestres incluidos en la base, 37 obtuvieron al menos una aprobación, equivalentes al 45,12%. Cada estudiante se cuenta una sola vez, aunque tenga evaluaciones en varios trimestres.
+
 ---
 
 ## 🔍 SQL Queries Utilizadas
