@@ -82,13 +82,11 @@ El esquema consta de **11 tablas normalizadas**:
 
 ### Query 4: Resumen General (Métricas Clave)
 **Resultado:** 
-- Total de estudiantes: 82
-- Total de carreras: 15
-- Estudiantes aprobados: 37
-- **Porcentaje de aprobación: 45.12%**
+- **Estudiantes únicos evaluados:** **82** 
+- **Estudiantes aprobados al menos una vez:** **37** 
+- **Porcentaje de aprobación:** **45,12%**
 
-**Interpretación:** Menos de la mitad de los estudiantes cumplen los requisitos académicos del programa (índice > 14). Esto es realista para un programa académicamente selectivo.
-
+**Interpretación:** De los 82 estudiantes únicos evaluados para el Programa de Ayudantía en los trimestres incluidos en la base, 37 obtuvieron al menos una aprobación, equivalentes al 45,12%. Cada estudiante se cuenta una sola vez, aunque tenga evaluaciones en varios trimestres.
 ---
 
 ## 🔍 SQL Queries Utilizadas
@@ -159,14 +157,18 @@ ORDER BY ab.Trimestre, e.Nombre_Anonimo
 ### Query 4: Resumen General (Métricas Clave)
 ```sql
 SELECT
-    COUNT(DISTINCT e.Estudiante_ID) AS Total_Estudiantes,
-    COUNT(DISTINCT c.Carrera_ID) AS Total_Carreras,
-    SUM(CASE WHEN ab.Aprobacion = 'SI' THEN 1 ELSE 0 END) / 
-    CAST(COUNT(DISTINCT e.Estudiante_ID) AS FLOAT) * 100 AS Pct_Estudiantes_Aprobados
-FROM APROBACION_BENEFICIOS ab
-JOIN ESTUDIANTES e ON ab.Estudiante_ID = e.Estudiante_ID
-JOIN ESTUDIANTES_CARRERAS ec ON e.Estudiante_ID = ec.Estudiante_ID
-JOIN CARRERAS c ON ec.Carrera_ID = c.Carrera_ID
+    COUNT(DISTINCT Estudiante_ID) AS Estudiantes_Evaluados,
+    COUNT(DISTINCT CASE
+        WHEN Aprobacion = 'SI' THEN Estudiante_ID
+    END) AS Estudiantes_Aprobados,
+    ROUND(
+        100.0 * COUNT(DISTINCT CASE
+            WHEN Aprobacion = 'SI' THEN Estudiante_ID
+        END)
+        / NULLIF(COUNT(DISTINCT Estudiante_ID), 0),
+        2
+    ) AS Porcentaje_Aprobacion
+FROM APROBACION_BENEFICIOS;
 ```
 
 **Demuestra:** Agregaciones con DISTINCT para métricas de negocio precisas.
